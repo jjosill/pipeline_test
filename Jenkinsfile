@@ -4,7 +4,7 @@ pipeline {
     stage('Build Assets') {
       agent any
       steps {
-        echo 'Building Assets'
+        echo 'Building Assets ${env.BUILD_ID} on ${env.JENKINS_URL}'
       }
     }
     stage('Trigger job') {
