@@ -1,5 +1,14 @@
-node {
-  git url: 'https://github.com/jglick/simple-maven-project-with-tests.git'
-  def mvnHome = tool 'M3'
-  sh "${mvnHome}/bin/mvn -B verify"
+pipeline {
+  agent any
+  stages {
+    stage('Build Assets') {
+      agent any
+      steps {
+        echo 'fetch and build'
+        git url: 'https://github.com/jglick/simple-maven-project-with-tests.git'
+        def mvnHome = tool 'M3'
+        sh "${mvnHome}/bin/mvn -B verify"
+      }
+    }
+  }
 }
